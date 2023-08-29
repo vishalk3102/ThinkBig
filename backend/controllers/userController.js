@@ -13,32 +13,27 @@ import cloudinary from 'cloudinary'
 export const register = catchAsyncError(async (req, res, next) => {
   const { name, email, password } = req.body
 
-  // const file = req.file
+  const file = req.file
 
-  // if (!name || !email || !password || !file)
-  if (!name || !email || !password)
+  if (!name || !email || !password || !file)
     return next(new ErrorHandler('Please enter all required fields', 400))
 
   let user = await User.findOne({ email })
 
   if (user) return next(new ErrorHandler('User Already Exists', 400))
 
-  // const fileUri = getDataUri(file);
+  const fileUri = getDataUri(file)
 
-  // const myCloud = await cloudinary.v2.uploader.upload(fileUri.content)
+  const myCloud = await cloudinary.v2.uploader.upload(fileUri.content)
 
   user = await User.create({
     name,
     email,
     password,
     avatar: {
-      public_id: 'tempid',
-      url: 'tempurl'
-    }
-    /* avatar: {
       public_id: myCloud.public_id,
       url: myCloud.secure_url
-    } */
+    }
   })
 
   sendToken(res, user, 'Registerd Successfully', 201)
@@ -129,7 +124,7 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
 
 // Update Profile Picture
 export const updateProfilePicture = catchAsyncError(async (req, res, next) => {
-  /*  const file = req.file
+  const file = req.file
 
   const user = await User.findById(req.user._id)
 
@@ -144,7 +139,7 @@ export const updateProfilePicture = catchAsyncError(async (req, res, next) => {
     url: myCloud.secure_url
   }
 
-  await user.save() */
+  await user.save()
 
   res.status(200).json({
     success: true,
@@ -291,7 +286,7 @@ export const deleteUser = catchAsyncError(async (req, res, next) => {
 
   if (!user) return next(new ErrorHandler('User not found', 404))
 
-  // await cloudinary.v2.uploader.destroy(user.avatar.public_id)
+  await cloudinary.v2.uploader.destroy(user.avatar.public_id)
 
   // Cancel Subscription :: TODO
 
