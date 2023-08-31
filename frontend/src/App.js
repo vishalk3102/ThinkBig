@@ -29,7 +29,7 @@ import { getMyProfile } from './redux/actions/userAction';
 import { ProtectedRoute } from 'protected-route-react';
 import Loader from './components/layout/loader/Loader';
 
-function App() {
+function App () {
   window.addEventListener('contextmenu', e => {
     e.preventDefault();
   });
@@ -64,21 +64,21 @@ function App() {
         <>
           <Header isAuthenticated={isAuthenticated} user={user} />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/courses' element={<Courses />} />
             <Route
-              path="/course/:id"
+              path='/course/:id'
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <CoursePage user={user} />
                 </ProtectedRoute>
               }
             />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/request" element={<Request />} />
-            <Route path="/about" element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/request' element={<Request />} />
+            <Route path='/about' element={<About />} />
             <Route
-              path="/profile"
+              path='/profile'
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Profile user={user} />
@@ -86,7 +86,7 @@ function App() {
               }
             />
             <Route
-              path="/changepassword"
+              path='/changepassword'
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <ChangePassword />
@@ -94,7 +94,7 @@ function App() {
               }
             />
             <Route
-              path="/updateprofile"
+              path='/updateprofile'
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <UpdateProfile user={user} />
@@ -102,64 +102,64 @@ function App() {
               }
             />
             <Route
-              path="/login"
+              path='/login'
               element={
                 <ProtectedRoute
                   isAuthenticated={!isAuthenticated}
-                  redirect="/profile"
+                  redirect='/profile'
                 >
                   <Login />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/register"
+              path='/register'
               element={
                 <ProtectedRoute
                   isAuthenticated={!isAuthenticated}
-                  redirect="/profile"
+                  redirect='/profile'
                 >
                   <Register />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/forgetpassword"
+              path='/forgetpassword'
               element={
                 <ProtectedRoute
                   isAuthenticated={!isAuthenticated}
-                  redirect="/profile"
+                  redirect='/profile'
                 >
                   <ForgetPassword />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/resetpassword/:token"
+              path='/resetpassword/:token'
               element={
                 <ProtectedRoute
                   isAuthenticated={!isAuthenticated}
-                  redirect="/profile"
+                  redirect='/profile'
                 >
                   <ResetPassword />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/subscribe"
+              path='/subscribe'
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Subscribe user={user} />
                 </ProtectedRoute>
               }
             />
-            <Route path="/paymentfailed" element={<PaymentFail />} />
-            <Route path="/paymentsuccess" element={<PaymentSuccess />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path='/paymentfailed' element={<PaymentFail />} />
+            <Route path='/paymentsuccess' element={<PaymentSuccess />} />
+            <Route path='*' element={<NotFound />} />
 
             {/* Admin Routes */}
             <Route
-              path="/admin/dashboard"
+              path='/admin/dashboard'
               element={
                 <ProtectedRoute
                   isAuthenticated={isAuthenticated}
@@ -171,7 +171,7 @@ function App() {
               }
             />
             <Route
-              path="/admin/createcourse"
+              path='/admin/createcourse'
               element={
                 <ProtectedRoute
                   isAuthenticated={isAuthenticated}
@@ -183,7 +183,7 @@ function App() {
               }
             />
             <Route
-              path="/admin/courses"
+              path='/admin/courses'
               element={
                 <ProtectedRoute
                   isAuthenticated={isAuthenticated}
@@ -195,7 +195,7 @@ function App() {
               }
             />
             <Route
-              path="/admin/users"
+              path='/admin/users'
               element={
                 <ProtectedRoute
                   isAuthenticated={isAuthenticated}
