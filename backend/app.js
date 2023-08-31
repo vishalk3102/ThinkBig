@@ -20,13 +20,13 @@ app.use(
   })
 )
 app.use(cookieParser())
-// app.use(
-//   cors({
-//     origin: 'https://coursebundler-one.vercel.app',
-//     credentials: true,
-//     methods: ['GET', 'POST', 'PUT', 'DELETE']
-//   })
-// )
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  })
+)
 
 //importing and using Routes
 import course from './routes/courseRoutes.js'
