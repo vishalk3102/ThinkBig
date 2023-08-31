@@ -39,52 +39,52 @@ const Header = ({ isAuthenticated = false, user }) => {
       <Button
         onClick={onOpen}
         colorScheme={'yellow'}
-        width="12"
+        width='12'
         height={'12'}
-        rounded="full"
+        rounded='full'
         zIndex={'overlay'}
         position={'fixed'}
-        top="6"
+        top='6'
         left={'6'}
       >
         <RiMenu5Fill />
       </Button>
 
-      <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
+      <Drawer placement='left' isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay backdropFilter={'blur(2px)'} />
         <DrawerContent>
-          <DrawerHeader borderBottom={'1px'}>COURSE BUNDLER</DrawerHeader>
+          <DrawerHeader borderBottom={'1px'}>THINK BIG</DrawerHeader>
           <DrawerBody>
-            <VStack spacing={'4'} alignItems="flex-start">
-              <MenuLinkButton onClose={onClose} url="/" title="Home" />
+            <VStack spacing={'4'} alignItems='flex-start'>
+              <MenuLinkButton onClose={onClose} url='/' title='Home' />
               <MenuLinkButton
                 onClose={onClose}
-                url="/courses"
-                title="Browse All Courses"
+                url='/courses'
+                title='Browse All Courses'
               />
               <MenuLinkButton
                 onClose={onClose}
-                url="/request"
-                title="Request a Course"
+                url='/request'
+                title='Request a Course'
               />
               <MenuLinkButton
                 onClose={onClose}
-                url="/contact"
-                title="Contact Us"
+                url='/contact'
+                title='Contact Us'
               />
-              <MenuLinkButton onClose={onClose} url="/about" title="About" />
+              <MenuLinkButton onClose={onClose} url='/about' title='About' />
 
               <HStack
                 justifyContent={'space-evenly'}
-                position="absolute"
+                position='absolute'
                 bottom={'2rem'}
-                width="80%"
+                width='80%'
               >
                 {isAuthenticated ? (
                   <>
                     <VStack>
                       <HStack>
-                        <Link onClick={onClose} to="/profile">
+                        <Link onClick={onClose} to='/profile'>
                           <Button variant={'ghost'} colorScheme={'yellow'}>
                             Profile
                           </Button>
@@ -96,7 +96,7 @@ const Header = ({ isAuthenticated = false, user }) => {
                       </HStack>
 
                       {user && user.role === 'admin' && (
-                        <Link onClick={onClose} to="/admin/dashboard">
+                        <Link onClick={onClose} to='/admin/dashboard'>
                           <Button colorScheme={'purple'} variant={'ghost'}>
                             <RiDashboardFill style={{ margin: '4px' }} />
                             Dashboard
@@ -107,11 +107,11 @@ const Header = ({ isAuthenticated = false, user }) => {
                   </>
                 ) : (
                   <>
-                    <Link onClick={onClose} to="/login">
+                    <Link onClick={onClose} to='/login'>
                       <Button colorScheme={'yellow'}>Login</Button>
                     </Link>
                     <p>OR</p>
-                    <Link onClick={onClose} to="/register">
+                    <Link onClick={onClose} to='/register'>
                       <Button colorScheme={'yellow'}>Sign Up</Button>
                     </Link>
                   </>
